@@ -62,7 +62,10 @@ public class Main {
             System.out.println("*****************************************");
             System.out.println("What do you wish to do" + CustName);
             System.out.println("*****************************************");
-            option = scanner.next().charAt()
+            option = scanner.next().charAt(0);
+            System.out.println("/n");
+
+            
         }
     }
 }
