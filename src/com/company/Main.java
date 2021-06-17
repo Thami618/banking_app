@@ -49,5 +49,20 @@ public class Main {
     public void ShowMenu(){
         char option = '\0';
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome " + CustName);
+        System.out.println("Your ID " + CustID);
+        System.out.println("\n");
+        System.out.println("A. Check your Balance");
+        System.out.println("B. Do you want to deposit cash?");
+        System.out.println("C. Do you want to withdraw cash?");
+        System.out.println("D. Do you want to check previous transaction?");
+
+        do {
+            System.out.println("*****************************************");
+            System.out.println("What do you wish to do" + CustName);
+            System.out.println("*****************************************");
+            option = scanner.next().charAt()
+        }
     }
 }
