@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	BankAcount obj = new BankAcount("Thamsanqa", "BX9858");
+	obj.ShowMenu();
     }
 }
  class BankAcount{
@@ -21,20 +22,21 @@ public class Main {
     }
 
     public void deposit(int amount){
-        if(amount != 0){
+        if(amount > 0){
             balance = balance + amount;
             PreviousTrans = amount;
         }
 
     }
-    public void withdraw(int amount){
+    public int withdraw(int amount){
         if(amount != 0){
             balance = balance - amount;
             PreviousTrans = -amount;
         }
+        return withdraw(amount);
     }
 
-    public void getPreviousTrans() {
+    public void getPreviousTrans(int PreviousTrans) {
         if(PreviousTrans > 0)
         {
             System.out.println("Deposited: " + PreviousTrans);
@@ -45,9 +47,10 @@ public class Main {
         else {
             System.out.println("No Transaction");
         }
+        //return getPreviousTrans(PreviousTrans);
     }
     public void ShowMenu(){
-        char option = '\0';
+        char option = 'A';
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome " + CustName);
@@ -57,15 +60,53 @@ public class Main {
         System.out.println("B. Do you want to deposit cash?");
         System.out.println("C. Do you want to withdraw cash?");
         System.out.println("D. Do you want to check previous transaction?");
+        System.out.println("E. Exit");
 
         do {
             System.out.println("*****************************************");
-            System.out.println("What do you wish to do" + CustName);
+            System.out.println("What do you wish to do " + CustName);
             System.out.println("*****************************************");
             option = scanner.next().charAt(0);
-            System.out.println("/n");
+            //System.out.println("/n");
 
-            
-        }
+            switch (option){
+                case 'A' :
+                    System.out.println("*****************************************");
+                    System.out.println("Balance: " + balance);
+                    System.out.println("*****************************************");
+                    //System.out.println("/n");
+                    break;
+                case 'B' :
+                    System.out.println("*****************************************");
+                    System.out.println("Enter amount you want to deposit");
+                    int amount = scanner.nextInt();
+                    System.out.println("*****************************************");
+                    //System.out.println("/n");
+                    break;
+                case 'C' :
+                    System.out.println("*****************************************");
+                    System.out.println("Enter withdrawal amount");
+                    int amount2 = scanner.nextInt();
+                    withdraw(amount2);
+                    System.out.println("*****************************************");
+                    //System.out.println("/n");
+                    break;
+                case 'D' :
+                    System.out.println("*****************************************");
+                    getPreviousTrans(PreviousTrans);
+                    System.out.println("*****************************************");
+                    System.out.println("/n");
+                    break;
+                case 'E' :
+                    System.out.println("*****************************************");
+                    break;
+
+                default:
+                    System.out.println("Invalid option, try again");
+                    break;
+
+            }
+        } while (option != 'E');
+        System.out.println("Thank for using our service");
     }
 }
